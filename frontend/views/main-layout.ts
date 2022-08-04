@@ -30,7 +30,7 @@ export class MainLayout extends Layout {
           <h2 class="view-title">${appStore.currentViewTitle}</h2>
         </header>
         <section class="drawer-section" slot="drawer">
-          <h1 class="app-name">${appStore.applicationName}</h1>
+          <h1 class="app-name">BANBEIS ERP</h1>
           <vcf-nav class="app-nav" aria-label="${appStore.applicationName}">
             ${this.getMenuRoutes().map(
               (viewRoute) => html`
