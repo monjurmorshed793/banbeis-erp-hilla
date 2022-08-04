@@ -1,6 +1,7 @@
-package com.example.application.data.service;
+package bd.gov.banbeis.data.repository;
 
-import com.example.application.data.entity.User;
+import bd.gov.banbeis.data.entity.User;
+
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 

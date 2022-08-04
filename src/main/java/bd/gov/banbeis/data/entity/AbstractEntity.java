@@ -1,4 +1,4 @@
-package com.example.application.data.entity;
+package bd.gov.banbeis.data.entity;
 
 import java.util.UUID;
 import javax.persistence.GeneratedValue;

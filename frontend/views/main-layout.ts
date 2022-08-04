@@ -47,9 +47,9 @@ export class MainLayout extends Layout {
                   <vaadin-avatar
                     theme="xsmall"
                     img="${appStore.user.profilePictureUrl}"
-                    name="${appStore.user.name}"
+                    name="${appStore.user.fullName}"
                   ></vaadin-avatar>
-                  <span class="font-medium ms-xs text-s text-secondary">${appStore.user.name}</span>
+                  <span class="font-medium ms-xs text-s text-secondary">${appStore.user.fullName}</span>
                 </vaadin-context-menu>`
               : html`<a router-ignore href="login">Sign in</a>`}
           </footer>
