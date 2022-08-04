@@ -13,6 +13,7 @@
         <java.version>18</java.version>
         <hilla.version>1.1.4</hilla.version>
         <selenium.version>4.2.1</selenium.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
     <parent>
@@ -219,8 +220,8 @@
                     <changeLogFile>${project.basedir}/src/main/resources/db/master.xml</changeLogFile>
                     <diffChangeLogFile>${project.basedir}/src/main/resources/db/changelogs/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>com.mysql.cj.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost:3306/banbeis-erp</url>
-                    <defaultSchemaName>banbeis-erp</defaultSchemaName>
+                    <url>jdbc:mysql://localhost:3306/banbeiserp</url>
+                    <defaultSchemaName>banbeiserp</defaultSchemaName>
                     <emptyPassword>false</emptyPassword>
                     <username>root</username>
                     <password>password</password>

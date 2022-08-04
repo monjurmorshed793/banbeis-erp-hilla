@@ -3,7 +3,7 @@ services:
   db:
     image: mysql
     environment:
-      MYSQL_DATABASE: 'banbeis-erp'
+      MYSQL_DATABASE: 'banbeiserp'
       # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
       # You can use whatever password you like

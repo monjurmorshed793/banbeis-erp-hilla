@@ -2,56 +2,31 @@ package bd.gov.banbeis.data.entity;
 
 import bd.gov.banbeis.data.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "application_user")
+@Data
+@Table(name = "application_user", indexes = @Index(columnList = "username, fullName, email"))
 public class User extends AbstractEntity {
 
+    @Column(unique = true, nullable = false, length = 25)
     private String username;
-    private String name;
+
+    @Column(nullable = false, length = 50)
+    private String fullName;
+
+    @Column(nullable = false, length = 50, unique = true)
+    private String email;
+
     @JsonIgnore
     private String hashedPassword;
-    @OneToMany
+
+    @ManyToMany
     private List<Role> roles;
     @Lob
     private String profilePictureUrl;
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getHashedPassword() {
-        return hashedPassword;
-    }
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    public String getProfilePictureUrl() {
-        return profilePictureUrl;
-    }
-    public void setProfilePictureUrl(String profilePictureUrl) {
-        this.profilePictureUrl = profilePictureUrl;
-    }
-
 }
