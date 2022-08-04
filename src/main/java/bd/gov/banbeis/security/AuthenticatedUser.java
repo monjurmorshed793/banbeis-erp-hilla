@@ -1,7 +1,7 @@
-package com.example.application.security;
+package bd.gov.banbeis.security;
 
-import com.example.application.data.entity.User;
-import com.example.application.data.service.UserRepository;
+import bd.gov.banbeis.data.entity.User;
+import bd.gov.banbeis.data.repository.UserRepository;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinServletRequest;
 import java.util.Optional;

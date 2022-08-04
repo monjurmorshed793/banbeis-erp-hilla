@@ -1,4 +1,4 @@
-package com.example.application.security;
+package bd.gov.banbeis.security;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurityConfigurerAdapter;
 import java.util.Base64;

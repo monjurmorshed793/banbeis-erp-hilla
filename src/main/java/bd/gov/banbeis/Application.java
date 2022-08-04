@@ -1,4 +1,4 @@
-package com.example.application;
+package bd.gov.banbeis;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.server.PWA;

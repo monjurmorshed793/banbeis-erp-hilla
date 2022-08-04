@@ -1,15 +1,11 @@
-package com.example.application.data.entity;
+package bd.gov.banbeis.data.entity;
 
-import com.example.application.data.Role;
+import bd.gov.banbeis.data.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
 import java.util.Set;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "application_user")
@@ -19,9 +15,8 @@ public class User extends AbstractEntity {
     private String name;
     @JsonIgnore
     private String hashedPassword;
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    @OneToMany
+    private List<Role> roles;
     @Lob
     private String profilePictureUrl;
 
@@ -43,12 +38,15 @@ public class User extends AbstractEntity {
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
-    public Set<Role> getRoles() {
+
+    public List<Role> getRoles() {
         return roles;
     }
-    public void setRoles(Set<Role> roles) {
+
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
     public String getProfilePictureUrl() {
         return profilePictureUrl;
     }

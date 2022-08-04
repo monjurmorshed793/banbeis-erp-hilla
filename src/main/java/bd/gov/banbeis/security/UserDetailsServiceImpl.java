@@ -1,7 +1,7 @@
-package com.example.application.security;
+package bd.gov.banbeis.security;
 
-import com.example.application.data.entity.User;
-import com.example.application.data.service.UserRepository;
+import bd.gov.banbeis.data.entity.User;
+import bd.gov.banbeis.data.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private static List<GrantedAuthority> getAuthorities(User user) {
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
                 .collect(Collectors.toList());
 
     }

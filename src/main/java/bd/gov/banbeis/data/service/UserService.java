@@ -1,8 +1,11 @@
-package com.example.application.data.service;
+package bd.gov.banbeis.data.service;
 
-import com.example.application.data.entity.User;
+import bd.gov.banbeis.data.entity.User;
+
 import java.util.Optional;
 import java.util.UUID;
+
+import bd.gov.banbeis.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
