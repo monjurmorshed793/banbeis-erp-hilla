@@ -219,8 +219,8 @@
                     <changeLogFile>${project.basedir}/src/main/resources/db/master.xml</changeLogFile>
                     <diffChangeLogFile>${project.basedir}/src/main/resources/db/changelogs/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>com.mysql.cj.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost:3306/iims</url>
-                    <defaultSchemaName>iims</defaultSchemaName>
+                    <url>jdbc:mysql://localhost:3306/banbeis-erp</url>
+                    <defaultSchemaName>banbeis-erp</defaultSchemaName>
                     <emptyPassword>false</emptyPassword>
                     <username>root</username>
                     <password>password</password>
