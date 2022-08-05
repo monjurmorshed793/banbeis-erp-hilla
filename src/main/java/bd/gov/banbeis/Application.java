@@ -6,6 +6,7 @@ import com.vaadin.flow.theme.Theme;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * The entry point of the Spring Boot application.
@@ -15,6 +16,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  *
  */
 @SpringBootApplication
+@EnableJpaAuditing
 @Theme(value = "banbeis-erp")
 @PWA(name = "banbeis-erp", shortName = "banbeis-erp", offlineResources = {})
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {

@@ -30,7 +30,7 @@ export class LoginView extends View {
         action="login"
         no-forgot-password
         .i18n=${Object.assign(
-          { header: { title: 'banbeis-erp', description: 'Login using user/user or admin/admin' } },
+          { header: { title: 'Banbeis ERP', description: 'Provide your username and password to login.' } },
           loginI18nDefault
         )}
       >

@@ -3,6 +3,7 @@ package bd.gov.banbeis.data.entity;
 import bd.gov.banbeis.data.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
 import java.util.Set;
@@ -10,8 +11,9 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "application_user", indexes = @Index(columnList = "username, fullName, email"))
-public class User extends AbstractEntity {
+public class User extends AbstractAuditing {
 
     @Column(unique = true, nullable = false, length = 25)
     private String username;
@@ -25,7 +27,7 @@ public class User extends AbstractEntity {
     @JsonIgnore
     private String hashedPassword;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
     @Lob
     private String profilePictureUrl;
