@@ -42,7 +42,6 @@ export const views: ViewRoute[] = [
       return;
     },
   },
-
   {
     path: 'user-list',
     component: 'user-list-view',
