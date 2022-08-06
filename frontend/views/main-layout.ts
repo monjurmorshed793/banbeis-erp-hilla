@@ -29,12 +29,14 @@ export class MainLayout extends Layout {
           <vaadin-drawer-toggle aria-label="Menu toggle" class="view-toggle" theme="contrast"></vaadin-drawer-toggle>
           <h2 class="view-title">${appStore.currentViewTitle}</h2>
         </header>
-        <section class="drawer-section" slot="drawer">
+          
+        <section class="drawer-section" slot="drawer" >
           <h1 class="app-name">BANBEIS ERP</h1>
-          <vcf-nav class="app-nav" aria-label="${appStore.applicationName}">
+
+          <vcf-nav id="user-management" [label]="user management"  class="app-nav" aria-label="User Management" label="User management" collapsible="true" collapsed="true">
             ${this.getMenuRoutes().map(
               (viewRoute) => html`
-                <vcf-nav-item path=${router.urlForPath(viewRoute.path)}>
+                <vcf-nav-item expanded="false" path=${router.urlForPath(viewRoute.path)}>
                   <span class="${viewRoute.icon} nav-item-icon" slot="prefix" aria-hidden="true"></span>
                   ${viewRoute.title}
                 </vcf-nav-item>
