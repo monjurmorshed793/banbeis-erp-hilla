@@ -10,6 +10,7 @@ import {UserListEndpoint} from "Frontend/generated/endpoints";
 import { GridDataProviderCallback, GridDataProviderParams} from "@vaadin/grid";
 import {columnBodyRenderer, GridColumnBodyLitRenderer} from "@vaadin/grid/lit";
 import { router } from "Frontend/index";
+import Role from "Frontend/generated/bd/gov/banbeis/data/entity/Role";
 
 @customElement('user-list-view')
 export class UserListView extends View{
@@ -32,6 +33,9 @@ export class UserListView extends View{
                    <vaadin-grid-column path="username"></vaadin-grid-column>
                    <vaadin-grid-column path="fullName"></vaadin-grid-column>
                    <vaadin-grid-column path="email"></vaadin-grid-column>
+                   <vaadin-grid-column path="roles"
+                        ${columnBodyRenderer(this.roleNameRenderer, [])} 
+                   ></vaadin-grid-column>
                    <vaadin-grid-column
                     frozen-to-end
                     auto-width
@@ -43,8 +47,16 @@ export class UserListView extends View{
         `;
     }
 
-    private nameRenderer: GridColumnBodyLitRenderer<User> = (user)=>{
-        return html`${user.id} ${user.username} ${user.fullName} ${user.email}`;
+    private roleNameRenderer: GridColumnBodyLitRenderer<User> = (user)=>{
+        const roles: Role[] = [];
+        user.roles?.forEach((r)=> roles.push(r!));
+        return html`${this.formatRoles(roles)}`;
+    }
+
+    private formatRoles(roles: Role[] ){
+        const roleNameArr: string[] = [];
+        roles.forEach((r)=> roleNameArr.push(r.role!));
+        return roleNameArr.toString();
     }
 
     private actionRenderer: GridColumnBodyLitRenderer<User> = (user: User)=>{
