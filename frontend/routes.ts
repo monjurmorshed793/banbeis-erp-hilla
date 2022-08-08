@@ -2,6 +2,8 @@ import { Route } from '@vaadin/router';
 import Role from 'Frontend/generated/bd/gov/banbeis/data/entity/Role';
 import { appStore } from './stores/app-store';
 import './views/helloworld/hello-world-view';
+import './views/user-management/user-list-view';
+import './views/user-management/add-user-view';
 import './views/main-layout';
 
 export type ViewRoute = Route & {
@@ -24,6 +26,7 @@ export const hasAccess = (route: Route) => {
   return true;
 };
 
+
 export const views: ViewRoute[] = [
   // place routes below (more info https://hilla.dev/docs/routing)
   {
@@ -32,6 +35,32 @@ export const views: ViewRoute[] = [
     requiresLogin: true,
     icon: '',
     title: '',
+    action: async (_context, _command) => {
+      if (!hasAccess(_context.route)) {
+        return _command.redirect('login');
+      }
+      return;
+    },
+  },
+  {
+    path: 'user-list',
+    component: 'user-list-view',
+    requiresLogin: true,
+    icon: 'la la-list',
+    title: 'User List',
+    action: async (_context, _command) => {
+      if (!hasAccess(_context.route)) {
+        return _command.redirect('login');
+      }
+      return;
+    },
+  },
+  {
+    path: 'add-user/:id?',
+    component: 'add-user-view',
+    requiresLogin: true,
+    icon: 'la la-user',
+    title: 'Add User',
     action: async (_context, _command) => {
       if (!hasAccess(_context.route)) {
         return _command.redirect('login');
@@ -67,6 +96,7 @@ export const views: ViewRoute[] = [
     },
   },
 ];
+
 export const routes: ViewRoute[] = [
   {
     path: 'login',

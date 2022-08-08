@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
 
-        <include file="db/changelogs/20220804214912_initial_data_set_up.xml" relativeToChangelogFile="false"/>
+        <include file="db/changelogs/20220805080815_initial_data_setup.xml" relativeToChangelogFile="false"/>
         <include file="db/changelogs/0000000001_initial_data_load.xml" relativeToChangelogFile="false"/>
 
 

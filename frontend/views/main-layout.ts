@@ -6,6 +6,8 @@ import '@vaadin/avatar/vaadin-avatar';
 import '@vaadin/context-menu';
 import '@vaadin/tabs';
 import '@vaadin/tabs/vaadin-tab';
+import '@vaadin/accordion';
+import 'bootstrap/dist/js/bootstrap'
 import { html, render } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { logout } from '../auth';
@@ -13,6 +15,7 @@ import { router } from '../index';
 import { hasAccess, views } from '../routes';
 import { appStore } from '../stores/app-store';
 import { Layout } from './view';
+import "@vaadin/accordion/src/vaadin-accordion-panel";
 
 interface RouteInfo {
   path: string;
@@ -29,18 +32,27 @@ export class MainLayout extends Layout {
           <vaadin-drawer-toggle aria-label="Menu toggle" class="view-toggle" theme="contrast"></vaadin-drawer-toggle>
           <h2 class="view-title">${appStore.currentViewTitle}</h2>
         </header>
-        <section class="drawer-section" slot="drawer">
-          <h1 class="app-name">${appStore.applicationName}</h1>
-          <vcf-nav class="app-nav" aria-label="${appStore.applicationName}">
+          
+        <section class="drawer-section" slot="drawer" >
+          <h1 class="app-name">BANBEIS ERP</h1>
+          
+          <vaadin-accordion-panel theme="reverse">
+            <div slot="summary">Employee Management</div>
+            <vaadin-vertical-layout>
+            <vcf-nav id="user-management" [label]="user management"  class="app-nav" aria-label="User Management" label="User management" collapsible="true" collapsed="true">
             ${this.getMenuRoutes().map(
               (viewRoute) => html`
-                <vcf-nav-item path=${router.urlForPath(viewRoute.path)}>
+                <vcf-nav-item expanded="false" path=${router.urlForPath(viewRoute.path)}>
                   <span class="${viewRoute.icon} nav-item-icon" slot="prefix" aria-hidden="true"></span>
                   ${viewRoute.title}
                 </vcf-nav-item>
               `
             )}
-          </vcf-nav>
+          </vcf-nav>  
+          </vaadin-vertical-layout>
+        </vaadin-accordion-panel>
+
+            
           <footer class="app-nav-footer">
             ${appStore.user
               ? html` <vaadin-context-menu open-on="click" .renderer="${this.renderLogoutOptions}">
