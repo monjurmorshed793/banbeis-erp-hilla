@@ -6,6 +6,8 @@ import '@vaadin/avatar/vaadin-avatar';
 import '@vaadin/context-menu';
 import '@vaadin/tabs';
 import '@vaadin/tabs/vaadin-tab';
+import '@vaadin/accordion';
+import 'bootstrap/dist/js/bootstrap'
 import { html, render } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { logout } from '../auth';
@@ -13,6 +15,7 @@ import { router } from '../index';
 import { hasAccess, views } from '../routes';
 import { appStore } from '../stores/app-store';
 import { Layout } from './view';
+import "@vaadin/accordion/src/vaadin-accordion-panel";
 
 interface RouteInfo {
   path: string;
@@ -32,8 +35,11 @@ export class MainLayout extends Layout {
           
         <section class="drawer-section" slot="drawer" >
           <h1 class="app-name">BANBEIS ERP</h1>
-
-          <vcf-nav id="user-management" [label]="user management"  class="app-nav" aria-label="User Management" label="User management" collapsible="true" collapsed="true">
+          
+          <vaadin-accordion-panel theme="reverse">
+            <div slot="summary">Employee Management</div>
+            <vaadin-vertical-layout>
+            <vcf-nav id="user-management" [label]="user management"  class="app-nav" aria-label="User Management" label="User management" collapsible="true" collapsed="true">
             ${this.getMenuRoutes().map(
               (viewRoute) => html`
                 <vcf-nav-item expanded="false" path=${router.urlForPath(viewRoute.path)}>
@@ -42,7 +48,12 @@ export class MainLayout extends Layout {
                 </vcf-nav-item>
               `
             )}
-          </vcf-nav>
+          </vcf-nav>  
+          </vaadin-vertical-layout>
+        </vaadin-accordion-panel>
+          </vaadin-accordion-panel>
+
+            
           <footer class="app-nav-footer">
             ${appStore.user
               ? html` <vaadin-context-menu open-on="click" .renderer="${this.renderLogoutOptions}">

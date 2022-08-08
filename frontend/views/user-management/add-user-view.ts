@@ -14,7 +14,12 @@ export class AddUserView extends View implements BeforeEnterObserver{
 
     protected render() {
         return html`
-            <div><h1>Hello world!</h1></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">Hello 1</div>
+                    <div class="col-md-6">Hello 2</div>
+                </div>
+            </div>
         `;
     }
 }
