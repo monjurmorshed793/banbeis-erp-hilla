@@ -51,7 +51,6 @@ export class MainLayout extends Layout {
           </vcf-nav>  
           </vaadin-vertical-layout>
         </vaadin-accordion-panel>
-          </vaadin-accordion-panel>
 
             
           <footer class="app-nav-footer">
