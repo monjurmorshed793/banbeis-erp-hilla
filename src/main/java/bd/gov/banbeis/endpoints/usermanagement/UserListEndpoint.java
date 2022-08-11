@@ -7,7 +7,6 @@ import dev.hilla.Endpoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -37,8 +36,7 @@ public class UserListEndpoint {
         var dbPage = userRepository.findAll(PageRequest.of(page, size));
         var response = new PageResponse<User>();
         response.content = dbPage.getContent();
-        response.size = dbPage.getSize();
+        response.size = userRepository.count(); // todo replaced with dbPage.size(), which is probably default. Need to check whether it works or not with pagination when data grows.
         return response;
     }
 }
-
