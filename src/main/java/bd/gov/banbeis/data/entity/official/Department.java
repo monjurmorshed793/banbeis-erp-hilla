@@ -16,10 +16,10 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 @Data
 public class Department extends AbstractAuditing {
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     @Getter(onMethod_ = @NotEmpty(message = "English name is required"))
     private String nameEn;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     @Getter(onMethod_ = @NotEmpty(message = "Bangla name is required"))
     private String nameBn;
     private String logoPath;

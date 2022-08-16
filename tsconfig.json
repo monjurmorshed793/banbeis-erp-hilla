@@ -30,5 +30,12 @@
     "frontend/index.js",
     "types.d.ts"
   ],
-  "exclude": []
+  "exclude": [],
+  "compilerOptions": {
+    // ...
+    "lib": [
+      "es2020",
+      "dom",
+    ]
+  }
 }
